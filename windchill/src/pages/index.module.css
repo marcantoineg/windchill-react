@@ -1,0 +1,19 @@
+.headingStyles {
+    margin-top: 0px;
+    margin-bottom: 64px;
+    max-width: 320px;
+    margin: auto;
+    padding-bottom: 50px;
+}
+
+.pageStyles {
+    color: #232129;
+    padding: 96px;
+    font-family: -apple-system, Roboto, sans-serif, serif;
+    margin: auto;
+    width: 50%;
+}
+
+.headingAccentStyles {
+    color: #5F3994;
+}
