@@ -13,7 +13,7 @@ export class WindchillForm extends React.Component {
             windSpeedUnit: speedUnits[0],
             temp: 0.0,
             tempUnit: temperatureUnits[0],
-            submittedWindchillIndex: null
+            windchillIndex: null
         };
         
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -34,17 +34,19 @@ export class WindchillForm extends React.Component {
 
                     <div className={styles.unitContainer} >
                         <label className={styles.inputLabel}>Wind speed:</label>
-                        <input name="windspeed" type="number" value={this.state.windSpeed} onChange={this.handleInputChange} className={styles.numericalInput} step={0.1} />
+                        <input name="windSpeed" type="number" value={this.state.windSpeed} onChange={this.handleInputChange} className={styles.numericalInput} min={0} />
                         <Select options={speedUnits} value={this.state.windSpeedUnit} onChange={this.handleSpeedUnitChange} className={styles.unitSelect} />
                     </div>
 
                     <button className={styles.submitButton} >get windchill index</button>
                 </form>
-
-                <div className={styles.windchillIndexContainer} hidden={this.state.submittedWindchillIndex != null}>
-                        <label>Windchill index:</label>
-                        <span className={styles.windchillIndexTemp}>{this.state.submittedWindchillIndex}</span> <span className={styles.windchillIndexUnit}>{this.state.submittedWindchillIndex}</span>
-                </div>
+                
+                { this.state.windchillIndex != null ? (
+                    <div className={styles.windchillIndexContainer}>
+                        <label className={styles.windchillIndexLabel}>Windchill index:</label>
+                        <p className={styles.windchillIndexValue}><span>{this.state.windchillIndex.Value.toFixed(2)}</span> <span className={styles.windchillIndexUnit}>˚{this.state.windchillIndex.Unit}</span></p>
+                    </div>
+                ) : '' }
             </div>
         )
     }
@@ -72,8 +74,8 @@ export class WindchillForm extends React.Component {
         WindchillHttpService.instance().getWindchillIndex(
             new Temperature(this.state.temp, this.state.tempUnit.value),
             new Speed(this.state.windSpeed, this.state.windSpeedUnit.value)
-        ).then((windchillIndex) => {
-            this.setState({'submittedWindchillIndex': windchillIndex})
+        ).then((wci) => {
+            this.setState({ 'windchillIndex': wci });
         });
 
         console.log('state:');

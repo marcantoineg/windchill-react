@@ -5,10 +5,11 @@
     padding: 25px;
     display: flex;
     flex-direction: column;
+    width: fit-content;
+    margin: auto;
 }
 
 .formContainer {
-    width: fit-content;
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -31,7 +32,7 @@
     width: 60px;
     border-radius: 4px;
     border: solid rgb(204, 204, 204, .8) 1px;
-    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.10), 0 5px 15px 0 rgba(0,0,0,0.10);
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,0.10), 0 3px 5px 0 rgba(0,0,0,0.10);
     height: 30px;
     padding: 3px 5px;
 }
@@ -59,22 +60,27 @@
 }
 
 .windchillIndexContainer {
-    margin: auto;
-    margin-top: 25px;
+    margin: 25px auto;
 }
 
-.windchillIndexContainer label {
-    margin: auto;
+.windchillIndexLabel {
+    display: block;
     font-weight: bold;
+    margin: 0 auto 15px;
 }
 
-.windchillIndexTemp {
-    margin-left: 20px;
+.windchillIndexValue {
+    width: fit-content;
+    margin: auto;
+    padding: 10px;
+    box-shadow: 0 5px 15px 0 rgba(0,0,0,0.10), 0 5px 15px 0 rgba(0,0,0,0.10);
+    border-radius: 4px;
 }
 
 .windchillIndexUnit {
     background-color: #5F3994;
     border-radius: 4px;
     color: #ffffff;
-    padding: 5px;
+    padding: 6px 10px;
+    margin-left: 5px;
 }
